@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import DailyWeather from '../components/DailyWeather.vue';
 </script>
 <template>
     <main>
-        <TheWelcome />
         <h1>Page meteo</h1>
+        <DailyWeather/>
     </main>
 </template>
