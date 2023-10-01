@@ -2,8 +2,18 @@
 </script>
 
 <template>
-    <div></div>
+    <header>
+        <div>app meteo</div>
+        <div>
+            <input type="search">
+            <button>Search</button>
+        </div>
+    </header>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+ header {
+    display: flex;
+    justify-content: space-between;
+ }
 </style>

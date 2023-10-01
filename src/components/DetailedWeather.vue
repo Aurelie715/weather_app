@@ -2,8 +2,12 @@
 </script>
 
 <template>
-    <div></div>
+    <div>
+        <p>jour</p>
+        <p>date</p>
+        <p>icon</p>
+        <p>temperature</p>
+    </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,9 +1,29 @@
 <script setup>
-import DailyWeather from '../components/DailyWeather.vue';
+import DailyWeather from '../components/DailyWeather.vue'
+import FavoriteCity from '../components/FavoriteCity.vue'
+import HeaderWeather from '../components/HeaderWeather.vue'
+import DetailedWeather from '../components/DetailedWeather.vue'
 </script>
 <template>
-    <main>
-        <h1>Page meteo</h1>
-        <DailyWeather/>
+    <HeaderWeather />
+    <main class="weather-board">
+        <DailyWeather class="left-side"/>
+        <div class="right-side">
+            <FavoriteCity />
+            <DetailedWeather />
+            <DetailedWeather />
+            <DetailedWeather />
+            <DetailedWeather />
+            <DetailedWeather />
+            <DetailedWeather />
+            <DetailedWeather />
+        </div>
     </main>
 </template>
+<style lang="scss">
+@import "../assets/scss/_variables.scss";
+
+.weather-board {
+    display: flex;
+}
+</style>
