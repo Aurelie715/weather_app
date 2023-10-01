@@ -26,7 +26,6 @@ getWeather().then((res) => {
 </template>
 
 <style scoped lang="scss">
-@import "../assets/scss/_variables.scss";
 .dailyweather-container {
     display: flex;
     flex-direction: column;

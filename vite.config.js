@@ -12,13 +12,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `@import "@/assets/scss/global.scss";`
-  //     }
-  //   }
-  // }
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/main.scss";`
+      }
+    }
+  }
   // module.exports = {
   //   css: {
   //     loaderOptions: {
