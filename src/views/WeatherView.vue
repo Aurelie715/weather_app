@@ -1,13 +1,20 @@
 <script setup>
-import DailyWeather from '../components/DailyWeather.vue'
-import FavoriteCity from '../components/FavoriteCity.vue'
-import HeaderWeather from '../components/HeaderWeather.vue'
-import DetailedWeather from '../components/DetailedWeather.vue'
+import {ref} from 'vue';
+import DailyWeather from '../components/DailyWeather.vue';
+import FavoriteCity from '../components/FavoriteCity.vue';
+import HeaderWeather from '../components/HeaderWeather.vue';
+import DetailedWeather from '../components/DetailedWeather.vue';
+
+const city = ref("azerty");
+
+const onSearch = (newCity) => {
+    city.value = newCity;
+};
 </script>
 <template>
-    <HeaderWeather />
+    <HeaderWeather @search="onSearch"/>
     <main class="weather-board">
-        <DailyWeather class="left-side"/>
+        <DailyWeather class="left-side" :city="city"/>
         <div class="right-side">
             <FavoriteCity />
             <DetailedWeather />
