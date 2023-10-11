@@ -9,11 +9,21 @@ import { getWeather } from '../services/weather-api';
 const city = ref("");
 const dailyWeather = ref([]);
 const favoriteCities = ref([]);
+const temperature = ref();
+const summary = ref("");
+const icon = ref();
 
 const onSearch = (newCity) => {
-    city.value = newCity;
     getWeather(newCity).then((res) => {
         dailyWeather.value = res.data.daily.data;
+        temperature.value = res.data.current.temperature;
+        summary.value = res.data.current.summary;
+        icon.value = res.data.current.icon_num;
+        city.value = newCity;
+    }).catch((error) => {
+        if (error.response) {
+            console.error("cette ville n'existe pas");
+        }
     });
 };
 
@@ -30,7 +40,7 @@ const onDelete = (city) => {
 <template>
     <main class="weather-board">
         <div class="left-side">
-            <DailyWeather :city="city" @saveCity="onSave"/>
+            <DailyWeather :city="city" :icon="icon" :summary="summary" :temperature="temperature" @saveCity="onSave"/>
         </div>
         <div class="right-side">
             <HeaderWeather @search="onSearch" />

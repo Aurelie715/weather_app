@@ -1,15 +1,15 @@
 <script setup>
 const props = defineProps(["favoriteCity"]);
 
-const emit = defineEmits(["click", "remove"])
+const emit = defineEmits(["click", "remove"]);
 
 const onClick = () => {
     emit("click", props.favoriteCity);
-}
+};
 
 const onRemove = () => {
-    emit("remove", props.favoriteCity)
-}
+    emit("remove", props.favoriteCity);
+};
 </script>
 
 <template>

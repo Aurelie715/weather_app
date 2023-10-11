@@ -1,39 +1,19 @@
 <script setup>
 import { getDayName } from '../services/date-helper';
-import { getWeather } from '../services/weather-api';
-import { ref, watch } from 'vue';
 
-const props = defineProps(["city"]);
-const temperature = ref(0);
-const summary = ref("");
-const icon = ref();
+const props = defineProps(["city", "icon", "summary", "temperature"]);
 const date = new Date();
 const emit = defineEmits(["saveCity"]);
 
 const day = getDayName(date);
 
-watch(props, ({ city }) => {
-    getWeather(city).then((res) => {
-        temperature.value = res.data.current.temperature;
-        summary.value = res.data.current.summary;
-        icon.value = res.data.current.icon_num;
-        console.log(res);
-    }).catch((error) => {
-        if (error.response) {
-            console.error("cette ville n'existe pas");
-            return null;
-        }
-    });
-});
-
 const saveCity = () => {
     emit("saveCity", props.city);
-}
-
+};
 </script>
 
 <template>
-    <div class="dailyweather-container">
+    <div class="dailyweather-container" v-if="city">
         <div class="register-btn">
             <button type="button" @click="saveCity">Add to favorite cities</button>
         </div>
@@ -41,13 +21,14 @@ const saveCity = () => {
             <h2 class="city">{{ city }}</h2>
             <p class="day">{{ day }}</p>
             <p class="date">{{ date.toLocaleDateString("us") }}</p>
-            <div class="icon" v-if="icon">
+            <div class="icon">
                 <img :src="`icons/${icon}.png`" alt="">
             </div>
             <p>{{ summary }}</p>
             <p class="temperature">{{ temperature }}°C</p>
         </div>
     </div>
+    <div v-else>Enter a city to access the weather forecast</div>
 </template>
 
 <style scoped lang="scss">

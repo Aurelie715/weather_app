@@ -6,6 +6,9 @@ const emit = defineEmits(["search"]);
 const city = ref("");
 
 const submitCity = () => {
+    if (city.value === '') {
+        return;
+    }
     emit("search", city.value);
     city.value = "";
 }
