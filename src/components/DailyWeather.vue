@@ -18,6 +18,11 @@ watch(props, ({ city }) => {
         summary.value = res.data.current.summary;
         icon.value = res.data.current.icon_num;
         console.log(res);
+    }).catch((error) => {
+        if (error.response) {
+            console.error("cette ville n'existe pas");
+            return null;
+        }
     });
 });
 
