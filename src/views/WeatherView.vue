@@ -14,13 +14,17 @@ const onSearch = (newCity) => {
     city.value = newCity;
     getWeather(newCity).then((res) => {
         dailyWeather.value = res.data.daily.data;
-        console.log(dailyWeather);
     });
 };
 
 const onSave = (city) => {
-favoriteCities.value.push(city);
+    favoriteCities.value.push(city);
 }
+
+const onDelete = (city) => {
+    favoriteCities.value.splice(favoriteCities.value.indexOf(city), 1)
+}
+
 </script>
 
 <template>
@@ -34,7 +38,8 @@ favoriteCities.value.push(city);
                 <FavoriteCity 
                     v-for="(favoriteCity, index) in favoriteCities" 
                     :key="index"
-                    :favoriteCity="favoriteCity"/>
+                    :favoriteCity="favoriteCity"
+                    @click="onSearch" @remove="onDelete"/>
             </div>
             <div class="days">
                 <DetailedWeather 

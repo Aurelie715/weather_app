@@ -30,7 +30,7 @@ const saveCity = () => {
 <template>
     <div class="dailyweather-container">
         <div class="register-btn">
-            <button type="button" @click="saveCity">save</button>
+            <button type="button" @click="saveCity">Add to favorite cities</button>
         </div>
         <div class="daily-weather">
             <h2 class="city">{{ city }}</h2>
