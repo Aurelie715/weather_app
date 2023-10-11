@@ -10,4 +10,9 @@
     </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+    .detailed-weather {
+        display: flex;
+        justify-content: space-between
+    }
+</style>

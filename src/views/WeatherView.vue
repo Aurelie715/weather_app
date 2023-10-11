@@ -54,5 +54,16 @@ favoriteCities.value.push(city);
 
 .weather-board {
     display: flex;
+    margin: 0 30px 0 0;
+}
+
+.left-side {
+    flex-grow: 1;
+}
+
+.right-side {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
 }
 </style>

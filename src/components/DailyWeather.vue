@@ -46,22 +46,32 @@ const saveCity = () => {
 .dailyweather-container {
     display: flex;
     flex-direction: column;
-    width: 40%;
     color: $color-primary;
     background-color: $color-secondary;
     padding: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-
+    margin-right: 50px;
+    height: 100vh;
+    .daily-weather {
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
     .register-btn {
         display: flex;
         justify-content: flex-end;
 
         button {
-            width: 20%;
+            background-color: $color-primary;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            color: $color-secondary;
+            box-shadow: 0px 5px 5px $shadow;
         }
     }
 
     .city {}
+
+    .day {}
 }
 </style>
