@@ -6,14 +6,9 @@ const emit = defineEmits(["search"]);
 const city = ref("");
 
 const submitCity = () => {
-    console.log(city, city.value);
     emit("search", city.value);
     city.value = "";
 }
-
-// watch(city, (newCity) => {
-    
-// });
 </script>
 
 <template>
