@@ -20,14 +20,16 @@ watch(props, ({city}) => {
     });
 });
 
-
+const saveCity = () => {
+    emit("saveCity", props.city);
+}
 
 </script>
 
 <template>
     <div class="dailyweather-container">
         <div class="register-btn">
-            <button type="button">enregistrer</button>
+            <button type="button" @click="saveCity">save</button>
         </div>
         <h2 class="city">{{ city }}</h2>
         <p class="day">{{ day }}</p>

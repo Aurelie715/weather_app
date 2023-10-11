@@ -1,19 +1,18 @@
 <script setup>
+defineProps(["favoriteCity"]);
 </script>
 
 <template>
-    <div>
-        <div>
-            <button type="button">
-                Nom de la ville
-            </button>
+    <div class="favoritecity-container">
+        <div class="favorite-city">
+            {{favoriteCity}}
         </div>
-        <div>
-            <button type="button">
-                supprimer
-            </button>
-        </div>
+        <button type="button">
+            supprimer
+        </button>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+    .favorite-city {}
+</style>

@@ -1,29 +1,51 @@
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import DailyWeather from '../components/DailyWeather.vue';
 import FavoriteCity from '../components/FavoriteCity.vue';
 import HeaderWeather from '../components/HeaderWeather.vue';
 import DetailedWeather from '../components/DetailedWeather.vue';
+import { getWeather } from '../services/weather-api';
 
-const city = ref("azerty");
+const city = ref("");
+const dailyWeather = ref([]);
+const favoriteCities = ref([]);
 
 const onSearch = (newCity) => {
     city.value = newCity;
+    getWeather(newCity).then((res) => {
+        dailyWeather.value = res.data.daily.data;
+        console.log(dailyWeather);
+    });
 };
+
+const onSave = (city) => {
+favoriteCities.value.push(city);
+}
 </script>
+
 <template>
-    <HeaderWeather @search="onSearch"/>
     <main class="weather-board">
-        <DailyWeather class="left-side" :city="city"/>
+        <div class="left-side">
+            <DailyWeather :city="city" @saveCity="onSave"/>
+        </div>
         <div class="right-side">
-            <FavoriteCity />
-            <DetailedWeather />
-            <DetailedWeather />
-            <DetailedWeather />
-            <DetailedWeather />
-            <DetailedWeather />
-            <DetailedWeather />
-            <DetailedWeather />
+            <HeaderWeather @search="onSearch" />
+            <div class="favorite-city">
+                <FavoriteCity 
+                    v-for="(favoriteCity, index) in favoriteCities" 
+                    :key="index"
+                    :favoriteCity="favoriteCity"/>
+            </div>
+            <div class="days">
+                <DetailedWeather 
+                    v-for="(dayWeather, index) in dailyWeather" 
+                    :date="dayWeather.day" 
+                    :icon="dayWeather.icon"
+                    :temperature="dayWeather.all_day.temperature" 
+                    :index="index" 
+                    :key="index" 
+                />
+            </div>
         </div>
     </main>
 </template>
