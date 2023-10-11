@@ -1,12 +1,21 @@
 <script setup>
+import { getDayName } from '../services/date-helper';
+
+
+const props = defineProps(["date", "icon", "temperature"]);
+const dayName = getDayName(new Date(props.date));
+
+
 </script>
 
 <template>
-    <div>
-        <p>jour</p>
-        <p>date</p>
-        <p>icon</p>
-        <p>temperature</p>
+    <div class="detailed-weather">
+        <p>{{dayName}}</p>
+        <p>{{date}}</p>
+        <div class="icon" v-if="icon">
+            <img :src="`icons/${icon}.png`" alt="">
+        </div>
+        <p>{{temperature}}°C</p>
     </div>
 </template>
 

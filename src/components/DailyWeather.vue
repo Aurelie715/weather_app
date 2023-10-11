@@ -1,4 +1,5 @@
 <script setup>
+import { getDayName } from '../services/date-helper';
 import { getWeather } from '../services/weather-api';
 import { ref, watch } from 'vue';
 
@@ -7,11 +8,11 @@ const temperature = ref(0);
 const summary = ref("");
 const icon = ref();
 const date = new Date();
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const emit = defineEmits(["saveCity"]);
 
-const day = days[date.getDay()];
+const day = getDayName(date);
 
-watch(props, ({city}) => {
+watch(props, ({ city }) => {
     getWeather(city).then((res) => {
         temperature.value = res.data.current.temperature;
         summary.value = res.data.current.summary;
@@ -31,14 +32,16 @@ const saveCity = () => {
         <div class="register-btn">
             <button type="button" @click="saveCity">save</button>
         </div>
-        <h2 class="city">{{ city }}</h2>
-        <p class="day">{{ day }}</p>
-        <p class="date">{{ date.toLocaleDateString("en") }}</p>
-        <div class="icon">
-            <img :src="`icons/${icon}.png`" alt="">
+        <div class="daily-weather">
+            <h2 class="city">{{ city }}</h2>
+            <p class="day">{{ day }}</p>
+            <p class="date">{{ date.toLocaleDateString("us") }}</p>
+            <div class="icon" v-if="icon">
+                <img :src="`icons/${icon}.png`" alt="">
+            </div>
+            <p>{{ summary }}</p>
+            <p class="temperature">{{ temperature }}°C</p>
         </div>
-        <p>{{summary}}</p>
-        <p class="temperature">{{ temperature }}°C</p>
     </div>
 </template>
 
