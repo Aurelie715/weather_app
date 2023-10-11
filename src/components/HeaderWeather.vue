@@ -16,8 +16,8 @@ const submitCity = () => {
 
 <template>
     <header class="search-bar">
-            <input type="text" placeholder="Rechercher une ville" name="city" class="city" v-model="city" v-on:keyup.enter="submitCity"/>
-            <button type="button" @click="submitCity">Search</button>
+        <input type="text" placeholder="Rechercher une ville" name="city" class="city" v-model="city" v-on:keyup.enter="submitCity"/>
+        <button type="button" @click="submitCity">Search</button>
     </header>
 </template>
 

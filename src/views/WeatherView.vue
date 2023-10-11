@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import DailyWeather from '../components/DailyWeather.vue';
+import CurrentWeather from '../components/CurrentWeather.vue';
 import FavoriteCity from '../components/FavoriteCity.vue';
 import HeaderWeather from '../components/HeaderWeather.vue';
 import DetailedWeather from '../components/DetailedWeather.vue';
@@ -40,7 +40,7 @@ const onDelete = (city) => {
 <template>
     <main class="weather-board">
         <div class="left-side">
-            <DailyWeather :city="city" :icon="icon" :summary="summary" :temperature="temperature" @saveCity="onSave"/>
+            <CurrentWeather :city="city" :icon="icon" :summary="summary" :temperature="temperature" @saveCity="onSave"/>
         </div>
         <div class="right-side">
             <HeaderWeather @search="onSearch" />
