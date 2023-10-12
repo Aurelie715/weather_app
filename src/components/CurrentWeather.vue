@@ -43,7 +43,9 @@ const saveCity = () => {
     .daily-weather {
         display: flex;
         flex-direction: column;
-        align-items: center
+        align-items: center;
+        height: 100%;
+        justify-content: center;
     }
     .register-btn {
         display: flex;

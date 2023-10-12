@@ -12,6 +12,7 @@ const favoriteCities = ref([]);
 const temperature = ref();
 const summary = ref("");
 const icon = ref();
+const searchError = ref();
 
 const onSearch = (newCity) => {
     getWeather(newCity).then((res) => {
@@ -22,7 +23,8 @@ const onSearch = (newCity) => {
         city.value = newCity;
     }).catch((error) => {
         if (error.response) {
-            console.error("cette ville n'existe pas");
+            console.error("This city was not found in our database");
+            searchError.value = "This city was not found in our database"
         }
     });
 };
@@ -43,7 +45,7 @@ const onDelete = (city) => {
             <CurrentWeather :city="city" :icon="icon" :summary="summary" :temperature="temperature" @saveCity="onSave"/>
         </div>
         <div class="right-side">
-            <HeaderWeather @search="onSearch" />
+            <HeaderWeather @search="onSearch" :error="searchError"/>
             <div class="favorite-city">
                 <FavoriteCity 
                     v-for="(favoriteCity, index) in favoriteCities" 
@@ -80,5 +82,9 @@ const onDelete = (city) => {
     flex-grow: 3;
     display: flex;
     flex-direction: column;
+    .favorite-city {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 </style>

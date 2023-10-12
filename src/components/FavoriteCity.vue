@@ -24,5 +24,10 @@ const onRemove = () => {
 </template>
 
 <style scoped lang="scss">
-    .favorite-city {}
+    .favoritecity-container {
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        margin-right: 20px
+    }
 </style>
