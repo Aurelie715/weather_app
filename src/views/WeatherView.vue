@@ -5,6 +5,14 @@ import FavoriteCity from '../components/FavoriteCity.vue';
 import HeaderWeather from '../components/HeaderWeather.vue';
 import DetailedWeather from '../components/DetailedWeather.vue';
 import { getWeather } from '../services/weather-api';
+// import { useForecastStore } from '../stores/forecast';
+// import { storeToRefs } from 'pinia'
+
+// const forecastStore = useForecastStore;
+
+// const {dailyWeather, searchError} = storeToRefs(forecastStore);
+
+// const {onSearch} = forecastStore;
 
 const city = ref("");
 const dailyWeather = ref([]);
