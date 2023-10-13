@@ -33,14 +33,16 @@ const submitCity = () => {
 </template>
 
 <style scoped lang="scss">
-.search-bar {
-    display: flex;
+.header-container {
     height: 100px;
-    align-items: center;
+    padding-top: 20px;
+    display: flex;
     justify-content: flex-end;
+}
 
+.search-bar {
     .city {
-        width: 40%;
+        width: 300px;
         height: 40px;
         border: 1px solid $color-secondary;
         border-radius: 5px 0 0 5px;
@@ -56,5 +58,10 @@ const submitCity = () => {
         border-radius: 0 5px 5px 0;
         cursor: pointer;
     }
+}
+
+p {
+    margin-block-start: unset;
+    margin-block-end: unset;
 }
 </style>

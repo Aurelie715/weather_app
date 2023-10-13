@@ -44,6 +44,7 @@ const saveCity = () => {
     padding: 30px;
     margin-right: 50px;
     height: 100vh;
+
     .daily-weather {
         display: flex;
         flex-direction: column;
@@ -51,6 +52,7 @@ const saveCity = () => {
         height: 100%;
         justify-content: center;
     }
+
     .register-btn {
         display: flex;
         justify-content: flex-end;
@@ -65,9 +67,5 @@ const saveCity = () => {
             cursor: pointer;
         }
     }
-
-    .city {}
-
-    .day {}
 }
 </style>

@@ -1,11 +1,8 @@
 <script setup>
 import { getDayName } from '../services/date-helper';
 
-
 const props = defineProps(["date", "icon", "temperature"]);
 const dayName = getDayName(new Date(props.date));
-
-
 </script>
 
 <template>
