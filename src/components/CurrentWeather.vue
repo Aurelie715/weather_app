@@ -1,14 +1,18 @@
 <script setup>
 import { getDayName } from '../services/date-helper';
+import { useForecastStore } from '../stores/forecast';
+import { storeToRefs } from 'pinia'
 
-const props = defineProps(["city", "icon", "summary", "temperature"]);
+const forecastStore = useForecastStore();
+
+const { city, temperature, summary, icon } = storeToRefs(forecastStore);
 const date = new Date();
 const emit = defineEmits(["saveCity"]);
 
 const day = getDayName(date);
 
 const saveCity = () => {
-    emit("saveCity", props.city);
+    emit("saveCity", city);
 };
 </script>
 
@@ -22,7 +26,7 @@ const saveCity = () => {
             <p class="day">{{ day }}</p>
             <p class="date">{{ date.toLocaleDateString("us") }}</p>
             <div class="icon">
-                <img :src="`icons/${icon}.png`" alt="">
+                <img v-if="icon" :src="`icons/${icon}.png`" alt="">
             </div>
             <p>{{ summary }}</p>
             <p class="temperature">{{ temperature }}°C</p>

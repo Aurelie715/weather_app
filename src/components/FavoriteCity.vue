@@ -1,21 +1,23 @@
 <script setup>
-const props = defineProps(["favoriteCity"]);
+import { useForecastStore } from '../stores/forecast';
 
-const emit = defineEmits(["click", "remove"]);
+const forecastStore = useForecastStore();
+
+const props = defineProps(["city"]);
 
 const onClick = () => {
-    emit("click", props.favoriteCity);
+    forecastStore.setCity(props.city);
 };
 
 const onRemove = () => {
-    emit("remove", props.favoriteCity);
+    forecastStore.removeFavoriteCity(props.city);
 };
 </script>
 
 <template>
     <div class="favoritecity-container">
         <div class="favorite-city" @click="onClick">
-            {{favoriteCity}}
+            {{ city }}
         </div>
         <button type="button" @click="onRemove">
             remove

@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue';
+import { useForecastStore } from '../stores/forecast';
+import { storeToRefs } from 'pinia'
 
-defineProps(["error"]);
+const forecastStore = useForecastStore();
 
-const emit = defineEmits(["search"]);
+const { searchError: error } = storeToRefs(forecastStore);
 
 const city = ref("");
 
@@ -11,18 +13,23 @@ const submitCity = () => {
     if (city.value === '') {
         return;
     }
-    emit("search", city.value);
+    forecastStore.setCity(city.value);
+
     city.value = "";
 }
 </script>
 
 <template>
-    <header class="search-bar">
-        <input type="text" placeholder="Enter a city..." name="city" class="city" v-model="city"
-            v-on:keyup.enter="submitCity" />
-            <button type="button" @click="submitCity">Search</button>
+    <div class="header-container">
+        <header class="search-bar">
+            <div>
+                <input type="text" placeholder="Enter a city..." name="city" class="city" v-model="city"
+                    v-on:keyup.enter="submitCity" />
+                <button type="button" @click="submitCity">Search</button>
+            </div>
             <p v-if="error">{{ error }}</p>
-    </header>
+        </header>
+    </div>
 </template>
 
 <style scoped lang="scss">
