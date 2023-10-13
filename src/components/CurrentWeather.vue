@@ -58,6 +58,7 @@ const saveCity = () => {
             border-radius: 5px;
             color: $color-secondary;
             box-shadow: 0px 5px 5px $shadow;
+            cursor: pointer;
         }
     }
 

@@ -20,8 +20,8 @@ const submitCity = () => {
     <header class="search-bar">
         <input type="text" placeholder="Enter a city..." name="city" class="city" v-model="city"
             v-on:keyup.enter="submitCity" />
-        <button type="button" @click="submitCity">Search</button>
-        <p v-if="error">{{ error }}</p>
+            <button type="button" @click="submitCity">Search</button>
+            <p v-if="error">{{ error }}</p>
     </header>
 </template>
 
@@ -47,6 +47,7 @@ const submitCity = () => {
         color: $color-primary;
         border: 1px solid $color-secondary;
         border-radius: 0 5px 5px 0;
+        cursor: pointer;
     }
 }
 </style>

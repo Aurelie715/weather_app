@@ -21,7 +21,16 @@ const dayName = getDayName(new Date(props.date));
 
 <style scoped lang="scss">
     .detailed-weather {
-        display: flex;
-        justify-content: space-between
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 10px;
+        .icon {
+            height: 50px;
+            width: 50px;
+            img {
+                max-width : 100%;
+                height : auto;
+            }
+        }
     }
 </style>

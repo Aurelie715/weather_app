@@ -75,11 +75,11 @@ const onDelete = (city) => {
 }
 
 .left-side {
-    flex-grow: 1;
+    width: 30%;
 }
 
 .right-side {
-    flex-grow: 3;
+    width: 70%;
     display: flex;
     flex-direction: column;
     .favorite-city {
